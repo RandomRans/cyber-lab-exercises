@@ -1,0 +1,26 @@
+# 🔍 Splunk Threat Detection Exercises
+
+This folder includes notes and practice logs related to threat detection using Splunk. These exercises helped me explore real-world detection methods used by SOC teams and Blue Team analysts.
+
+---
+
+## 🛠️ Tools Used
+- Splunk Enterprise (local instance)
+- Sample data logs (syslog, authentication logs, malware traffic samples)
+
+---
+
+## 🧪 Detection Techniques Practiced
+- **Brute-force attack detection**: Using failed login attempts over a short window of time
+- **Suspicious PowerShell usage**: Identifying Base64 encoded scripts in command-line logs
+- **Port scanning activity**: Flagging repeated access to multiple ports by the same source
+- **DNS tunneling**: Monitoring DNS requests for suspicious or encoded patterns
+
+---
+
+## 📊 Sample SPL Queries
+
+```spl
+index=main sourcetype=WinEventLog:Security EventCode=4625 
+| stats count by Account_Name, src_ip
+| where count > 5
