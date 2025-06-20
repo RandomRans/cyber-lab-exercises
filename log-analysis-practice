@@ -1,0 +1,43 @@
+# 📝 Log Analysis Practice
+
+This section contains notes and practical exercises for analyzing system and security logs across various Linux environments. I used tools like `journalctl`, `grep`, `awk`, and custom scripts to understand patterns and uncover anomalies.
+
+---
+
+## 🔧 Tools Used
+- Ubuntu (WSL and VirtualBox)
+- `journalctl`, `auth.log`, `syslog`
+- `grep`, `awk`, `cut`, `sed`
+- Python for custom log parsing
+
+---
+
+## 🔍 Logs Analyzed
+
+### 1. **auth.log**
+- Detected failed SSH login attempts
+- Identified sudo activity by specific users
+- Tracked privilege escalation events
+
+### 2. **syslog**
+- Filtered for system reboots and kernel messages
+- Reviewed startup service failures
+- Captured USB insert/remove logs
+
+### 3. **journalctl**
+- Used flags like `--since`, `--until`, `-u ssh`, and `-p err` to filter logs
+- Exported results to text files for deeper inspection
+
+---
+
+## 📑 Example Commands
+
+```bash
+# Find failed SSH logins
+grep "Failed password" /var/log/auth.log | awk '{print $1, $2, $3, $11, $13}'
+
+# Show logs for the SSH service
+journalctl -u ssh --since "1 hour ago"
+
+# List all sudo usage
+grep 'sudo' /var/log/auth.log | cut -d':' -f4-
