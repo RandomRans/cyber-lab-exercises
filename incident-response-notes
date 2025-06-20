@@ -1,0 +1,103 @@
+
+# 🛡️ Incident Response Notes
+
+This file contains essential notes and practical steps for handling cybersecurity incidents, particularly on Linux systems. It outlines the initial response, triage, containment, and forensic steps relevant for Blue Team operations.
+
+---
+
+## 🔍 Initial Triage & Detection
+
+1. **Identify the Indicator of Compromise (IOC)**:
+   - Suspicious login attempts
+   - Unexpected running processes
+   - High CPU/network usage
+
+2. **Check for User Login Anomalies**:
+   ```bash
+   last -a | head
+   who
+   w
+   ```
+
+3. **Process Inspection**:
+   ```bash
+   ps aux --sort=-%cpu | head
+   top
+   ```
+
+4. **Network Connections**:
+   ```bash
+   netstat -tulpn
+   ss -tuna
+   lsof -i
+   ```
+
+---
+
+## 🧯 Containment Steps
+
+1. **Isolate the Host**:
+   - Remove from network (if necessary)
+   - Limit access via firewall
+
+2. **Stop Malicious Processes**:
+   ```bash
+   kill -9 <PID>
+   ```
+
+3. **Audit Running Services**:
+   ```bash
+   systemctl list-units --type=service
+   chkconfig --list
+   ```
+
+---
+
+## 📝 Log Collection
+
+1. **Authentication Logs**:
+   ```bash
+   cat /var/log/auth.log | grep "Failed"
+   cat /var/log/secure
+   ```
+
+2. **System Logs**:
+   ```bash
+   dmesg
+   journalctl -xe
+   ```
+
+3. **Copy logs for investigation**:
+   ```bash
+   cp /var/log/*.log /home/forensics/logs/
+   ```
+
+---
+
+## 🔎 Forensics
+
+1. **Hashing files for evidence integrity**:
+   ```bash
+   sha256sum suspicious_file
+   ```
+
+2. **Audit system changes**:
+   ```bash
+   ausearch -x bash
+   aureport --auth
+   ```
+
+3. **Memory capture** (if supported):
+   Use tools like `LiME` or `volatility` on captured dumps.
+
+---
+
+## ✅ Final Notes
+
+- Always maintain chain-of-custody for evidence.
+- Record all actions taken.
+- Report and document the timeline.
+
+---
+
+🧠 *Review regularly. Stay ready. Incident response is about preparation as much as reaction.*
