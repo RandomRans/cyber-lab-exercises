@@ -1,47 +1,52 @@
-# 🔐 Cyber Lab Exercises
+### 🧠 Cyber Lab Exercises
 
-This repository contains hands-on cybersecurity mini-labs, detection walkthroughs, and log analysis notes designed to demonstrate a foundational understanding of blue team operations and system monitoring.
-
----
-
-## 📁 Contents
-
-### 1. `splunk-threat-detection/`
-- 🔍 Sample SPL queries used to detect brute-force attempts, suspicious DNS lookups, and failed logins
-- 📸 Screenshots of dashboards and query outputs
-- 📝 Breakdown of the detection logic
-
-### 2. `incident-response-notes/`
-- 🧠 Playbook-style notes for identifying and escalating:
-  - Unusual login times
-  - Malware alerts
-  - Unauthorized privilege escalation
-- 🔗 Frameworks referenced: NIST, MITRE ATT&CK
-
-### 3. `log-analysis-practice/`
-- 📂 Sample log files (simulated or from TryHackMe-style labs)
-- 🗂 Annotated examples of:
-  - Windows Event Logs
-  - Linux auth logs
-  - Web server access logs
+A hands-on repository showcasing my exploration of cybersecurity fundamentals. These exercises demonstrate practical knowledge in system hardening, log analysis, basic threat detection, and Blue Team operations using widely adopted tools and commands.
 
 ---
 
-## 🚀 Getting Started
-These labs are designed to reflect Tier 1 SOC Analyst tasks:
-- Review alerts
-- Investigate log patterns
-- Escalate based on documented steps
+### 🛠 Topics Covered
 
-Everything here is beginner-friendly and built using free tools (Splunk Free, local logs, simulated lab environments).
+- 🔐 Linux system hardening and user auditing  
+- 📊 Log parsing and analysis (auth.log, syslog, journalctl)  
+- 🧩 File integrity monitoring (AuditD, AIDE)  
+- 🚨 Intrusion detection concepts (e.g., Fail2Ban configuration)  
+- 📡 Network reconnaissance defense and firewall configuration (UFW, iptables)  
+- 🛑 Malware triage and response basics  
+- 📁 File permissions and sudo privilege reviews  
 
 ---
 
-## 📌 Author
-**Tamisha Ransom-Goggins**
-- U.S. Air Force Veteran
-- CompTIA Security+ | Linux Essentials | AWS Certified Cloud Practitioner (in progress)
-- [LinkedIn](https://www.linkedin.com/in/tamisha-ransom)
+### 🧪 Tools & Platforms Used
 
+- Ubuntu/Linux via WSL and VirtualBox  
+- Bash scripting and PowerShell basics  
+- AuditD, UFW, syslog, logrotate  
+- Splunk and Elastic Stack (introduced, planned for expansion)  
+- Wireshark and tcpdump for packet analysis
 
-> *This repo is a living portfolio of my blue team learning journey.*
+---
+
+### 💻 Sample Exercises & Concepts
+
+| Exercise | Description |
+|----------|-------------|
+| `audit_file_integrity.sh` | Bash script using AuditD to monitor system file changes |
+| `user_audit_report` | Lists all sudo users, login activity, and idle accounts |
+| `ufw_firewall_rules` | Secures SSH and blocks common ports with UFW |
+| `auth_log_parser.py` | Python script to scan and summarize failed logins |
+| `nmap_scan_detect` | Configures iptables and Fail2Ban to detect and block port scans |
+
+---
+
+### 📌 Status
+
+✔️ All labs completed and working  
+🚧 Continuously expanding as I reinforce more Blue Team and system security knowledge
+
+---
+
+### 🧠 About This Project
+
+This repo is designed to demonstrate foundational cybersecurity and Linux system administration skills for entry-level roles. No screenshots included yet — coming soon as optional visual reference.
+
+---
